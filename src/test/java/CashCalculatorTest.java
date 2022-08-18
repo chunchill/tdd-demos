@@ -9,7 +9,7 @@ public class CashCalculatorTest {
     double amount = 0d;
 
     @Before
-    public void before() {
+    public void setUp() {
         calculator = new CashCalculator();
         calculator.setMount(5);
         calculator.setUnitPrice(200d);
