@@ -6,12 +6,12 @@ import static org.junit.Assert.*;
 public class CashCalculatorTest {
 
     private CashCalculator calculator;
-    double amount = 0d;
+    private Double totalAmount = 0d;
 
     @Before
     public void setUp() {
         calculator = new CashCalculator();
-        calculator.setMount(5);
+        calculator.setAmount(5);
         calculator.setUnitPrice(200d);
     }
 
@@ -19,8 +19,8 @@ public class CashCalculatorTest {
     public void should_return_1000d_if_try_a_normal_pay(){
         NonStrategy underlyingStrategy = (NonStrategy) StrategyContextFactory.useStrategy(StrategyEnum.NORMAL);
         calculator.setUnderlyingStrategy(underlyingStrategy);
-        amount = calculator.calculate();
-        assertEquals(1000d,amount,0);
+        totalAmount = calculator.calculate();
+        assertEquals(1000d, totalAmount,0);
     }
 
     @Test
@@ -28,8 +28,8 @@ public class CashCalculatorTest {
         DiscountStrategy underlyingStrategy = (DiscountStrategy) StrategyContextFactory.useStrategy(StrategyEnum.DISCOUNT);
         underlyingStrategy.setDiscountRate(0.7);
         calculator.setUnderlyingStrategy(underlyingStrategy);
-        amount = calculator.calculate();
-        assertEquals(700d,amount,0);
+        totalAmount = calculator.calculate();
+        assertEquals(700d, totalAmount,0);
     }
 
     @Test
@@ -37,8 +37,8 @@ public class CashCalculatorTest {
         ReturnStrategy underlyingStrategy = (ReturnStrategy) StrategyContextFactory.useStrategy(StrategyEnum.RETURN);
         underlyingStrategy.setUp(200d,50d);
         calculator.setUnderlyingStrategy(underlyingStrategy);
-        amount = calculator.calculate();
-        assertEquals(750d,amount,0);
+        totalAmount = calculator.calculate();
+        assertEquals(750d, totalAmount,0);
     }
 
 }

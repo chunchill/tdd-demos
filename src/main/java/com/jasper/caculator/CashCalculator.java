@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CashCalculator {
 
-    private Integer mount;
+    private Integer amount;
     private Double unitPrice;
     private PromotionStrategy underlyingStrategy;
 
@@ -15,7 +15,7 @@ public class CashCalculator {
     }
 
     public double calculate(){
-        double originalAmount = unitPrice * mount;
+        double originalAmount = unitPrice * amount;
         underlyingStrategy.setOriginalAmount(originalAmount);
         return underlyingStrategy.execute();
     }

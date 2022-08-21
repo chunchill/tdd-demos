@@ -1,6 +1,6 @@
 # tdd-demos
 
-This demo is for understanding TDD practice.
+This project is for understanding TDD practice.
 
 ## scenario description
 
